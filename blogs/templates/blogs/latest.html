@@ -1,19 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-{% for post in object_list %}
+{% extends 'base.html' %}
+
+{% block main_title %} Home {% endblock %}
+
+{% block main_content %}
+   <h2>Latest post</h2>
+    {% for post in object_list %}
         <hr>
         {{ post.name }} <br>
         {{ post.description }} <br>
-        {{ post.content }} <br>
 
-        {{ post.url }} <br>
-        {{ post.publication_date }} <br>
+        {{ post.url }} meterla en img<br>
+        {{ post.publication_date |date:'d/m/Y' }} {{ post.publication_date |time:'H:i'}}<br>
         <hr>
     {% endfor %}
-</body>
-</html>
+{% endblock %}
