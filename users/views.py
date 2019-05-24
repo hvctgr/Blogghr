@@ -42,3 +42,8 @@ class LogoutView(View):
     def get(self, request):
         django_logout(request)
         return redirect('login')
+
+
+# https://simpleisbetterthancomplex.com/tutorial/2017/02/18/how-to-create-user-sign-up-view.html#sign-up-with-profile-model
+class SignupForm(View):
+    return render
