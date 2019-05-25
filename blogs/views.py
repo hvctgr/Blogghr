@@ -37,24 +37,23 @@ class BlogDetail(ListView):
                                        publication_date__lte=datetime.datetime.now()).order_by('-publication_date')
         return queryset
 
-
+""""
 class BlogPostDetail(View):
     def get(self, request, username, pk):
         post = get_object_or_404(Post.objects.select_related('owner'), pk=pk)
         context = {'post': post, 'owner': username}
         html = render(request, 'blogs/blog_post_detail.html', context)
         return HttpResponse(html)
+"""
 
 
-""""
 class BlogPostDetail(DetailView):
     template_name = 'blogs/blog_post_detail.html'
 
     def get_queryset(self):
         queryset = Post.objects.filter(owner__username=self.kwargs.get('username'), pk=self.kwargs.get('pk'),
-                                       publication_date=datetime.datetime.now())
+                                       publication_date__lte=datetime.datetime.now())
         return queryset
-"""
 
 
 class NewPostView(LoginRequiredMixin, View):
