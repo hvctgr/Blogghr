@@ -3,10 +3,12 @@ env/
 venv/
 
 # Pycharm $ VSCode
+.idea/
 ./idea/
 .vscode/
 
 # SQLite
 *.sqlite3/
+db.sqlite3
 
 __pycache__

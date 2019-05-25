@@ -1,9 +1,17 @@
 {% extends 'base.html' %}
 
-{% block main_title %} Blog post detail {% endblock %}
+{% block main_title %} Blog detalle {% endblock %}
 
 {% block main_content %}
-   <h2>Detalle post</h2>
-    Detalle de un post de un usuario
-    {% endfor %}
+   <h2> {{ post.name }} </h2>
+        <hr>
+        {{ post.description }} <br>
+        {{ post.content }} <br>
+        <img src="{{ post.url }}" alt="{{ post.name }}"><br>
+        {{ post.publication_date |date:'d/m/Y' }} {{ post.publication_date |time:'H:i'}}<br>
+        {% for category in post.categories.all %}
+            {{ category.name }} <br>
+        {% endfor %}
+        {{ post.owner.username }}: {{ post.owner.first_name|title }} {{ post.owner.last_name|title }}
+        <hr>
 {% endblock %}
