@@ -12,14 +12,14 @@ class LoginView(View):
         context = {'form': form}
         return render(request, 'users/login.html', context)
 
-    def get(self, request):  # Sólo se ejecutará cuando el método de la petición HTTP sea GET
+    def get(self, request):
         if request.user.is_authenticated:
             return redirect('home')
 
         form = LoginForm()
         return self.render_template_with_form(request, form)
 
-    def post(self, request):  # Sólo se ejecutará cuando el método de la petición HTTP sea POST
+    def post(self, request):
         if request.user.is_authenticated:
             return redirect('home')
 

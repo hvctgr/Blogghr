@@ -1,8 +1,10 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>{% block head_title %} Blogghr {% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
 </head>
 <body>
     <div class="container">
@@ -34,5 +36,6 @@
             Blogghr &copy; {% now 'Y' %}. All rights reserved.
         </footer>
     </div>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
 </body>
 </html>
