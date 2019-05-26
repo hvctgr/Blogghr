@@ -3,8 +3,7 @@ import datetime
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import User
-from django.http import HttpResponse
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render
 from django.views import View
 
 from django.views.generic import ListView, DetailView
@@ -12,12 +11,15 @@ from django.views.generic import ListView, DetailView
 from blogs.forms import PostForm
 from blogs.models import Post
 
+from django.utils import timezone
+now = timezone.now()
+
 
 class LatestPost(ListView):
     template_name = 'blogs/latest.html'
 
     def get_queryset(self):
-        queryset = Post.objects.filter(publication_date__lte=datetime.datetime.now()).order_by('-publication_date')
+        queryset = Post.objects.filter(publication_date__lte=now).order_by('-publication_date')
         return queryset
 
 
@@ -34,7 +36,7 @@ class BlogDetail(ListView):
 
     def get_queryset(self):
         queryset = Post.objects.filter(owner__username=self.kwargs.get('username'),
-                                       publication_date__lte=datetime.datetime.now()).order_by('-publication_date')
+                                       publication_date__lte=now).order_by('-publication_date')
         return queryset
 
 """"
@@ -52,7 +54,7 @@ class BlogPostDetail(DetailView):
 
     def get_queryset(self):
         queryset = Post.objects.filter(owner__username=self.kwargs.get('username'), pk=self.kwargs.get('pk'),
-                                       publication_date__lte=datetime.datetime.now())
+                                       publication_date__lte=now)
         return queryset
 
 
