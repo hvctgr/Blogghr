@@ -1,15 +1,15 @@
 {% extends 'base.html' %}
 
-{% block main_title %} Blog de {{ object_list.0.owner.first_name|title }}  {{ object_list.0.owner.last_name|title }}{% endblock %}
+{% block main_title %} {{ object_list.0.owner.first_name|title }}  {{ object_list.0.owner.last_name|title }}'s blog{% endblock %}
 
 {% block main_content %}
     {% for post in object_list %}
         <hr>
-        {{ post.name }} <br>
-        {{ post.description }} <br>
+        <strong>Title:</strong> {{ post.name }} <br>
+        <strong>Description:</strong> {{ post.description }} <br>
         <img src="{{ post.url }}" alt="{{ post.name }}"><br>
-        {{ post.publication_date |date:'d/m/Y' }} {{ post.publication_date |time:'H:i'}}<br>
-        {{ post.owner.username }}
+        <strong>Publication date:</strong> {{ post.publication_date |date:'d/m/Y' }} {{ post.publication_date |time:'H:i'}}<br>
+        <strong>Property of </strong> {{ post.owner.first_name|title }} {{ post.owner.last_name|title }} ({{ post.owner.username }})
         <hr>
     {% endfor %}
 {% endblock %}

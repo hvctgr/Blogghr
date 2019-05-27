@@ -1,5 +1,6 @@
 from django.db.models import Q
 from django.utils import timezone
+from rest_framework.filters import OrderingFilter, SearchFilter
 from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
 
@@ -11,6 +12,10 @@ from blogs.serializers import PostListSerializer, PostSerializer
 class PostsAPI(ListCreateAPIView):
 
     permission_classes = [IsAuthenticatedOrReadOnly]
+
+    filter_backends = [SearchFilter, OrderingFilter]
+    search_fields = ['name', 'content']
+    ordering_fields = ['name', 'publication_date']
 
     def get_queryset(self):
         queryset = Post.objects.all().order_by('-publication_date')
