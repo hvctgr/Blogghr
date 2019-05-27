@@ -12,14 +12,13 @@ from blogs.forms import PostForm
 from blogs.models import Post
 
 from django.utils import timezone
-now = timezone.now()
 
 
 class LatestPost(ListView):
     template_name = 'blogs/latest.html'
 
     def get_queryset(self):
-        queryset = Post.objects.filter(publication_date__lte=now).order_by('-publication_date')
+        queryset = Post.objects.filter(publication_date__lte=timezone.now()).order_by('-publication_date')
         return queryset
 
 
@@ -36,7 +35,7 @@ class BlogDetail(ListView):
 
     def get_queryset(self):
         queryset = Post.objects.filter(owner__username=self.kwargs.get('username'),
-                                       publication_date__lte=now).order_by('-publication_date')
+                                       publication_date__lte=timezone.now()).order_by('-publication_date')
         return queryset
 
 """"
@@ -54,7 +53,7 @@ class BlogPostDetail(DetailView):
 
     def get_queryset(self):
         queryset = Post.objects.filter(owner__username=self.kwargs.get('username'), pk=self.kwargs.get('pk'),
-                                       publication_date__lte=now)
+                                       publication_date__lte=timezone.now())
         return queryset
 
 
