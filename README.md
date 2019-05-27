@@ -2,7 +2,7 @@
 
 Blogger website with an API Rest
 
-##Installation steps
+## Installation steps
     ```bash
     > pip install -r requirements.txt
     > python manage.py migrate    
@@ -10,7 +10,7 @@ Blogger website with an API Rest
     > python manage.py runserver
     ```
 
-##WEBSITE
+## WEBSITE
 | URL | Description |
 | --- | --- |
 | Users |
@@ -23,7 +23,7 @@ Blogger website with an API Rest
 | `/blogs/<str:username>/<int:pk>` | Show detailed information of a post |
 | `/new-post/` | Creation of a new post |
     
-##ENDPOINTS
+## ENDPOINTS
 | URL | Method | Description | Who|
 | --- | --- | --- | --- |
 | Users |
