@@ -4,10 +4,10 @@ Blogger website with an API Rest
 
 ## Installation steps
 ```bash
-    > pip install -r requirements.txt
-    > python manage.py migrate    
-    > python manage.py createsuperuser
-    > python manage.py runserver
+> pip install -r requirements.txt
+> python manage.py migrate    
+> python manage.py createsuperuser
+> python manage.py runserver
 ```
 
 ## WEBSITE
